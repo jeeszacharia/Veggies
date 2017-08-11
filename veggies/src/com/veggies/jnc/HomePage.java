@@ -177,6 +177,7 @@ public class HomePage extends JFrame {
 				}
 				
                     if(chckbxPear.isSelected()){
+                    	System.out.println("");
                     	                    	                                      										
 					String pearSelected=chckbxPear.getText();
 					
