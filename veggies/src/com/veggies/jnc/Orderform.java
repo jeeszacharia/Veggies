@@ -1,28 +1,26 @@
 package com.veggies.jnc;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import com.mysql.jdbc.PreparedStatement;
-
-import net.proteanit.sql.DbUtils;
-
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.awt.event.ActionEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTable;
-import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import com.mysql.jdbc.PreparedStatement;
+
+import net.proteanit.sql.DbUtils;
 
 public class Orderform extends JFrame {
 
@@ -32,7 +30,6 @@ public class Orderform extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTable table;
 
 	/**
@@ -58,6 +55,7 @@ public class Orderform extends JFrame {
 	 */
 	@SuppressWarnings("null")
 	public Orderform() throws SQLException  {
+		@SuppressWarnings("unused")
 		connection obj= new connection();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,13 +83,8 @@ public class Orderform extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblTotal = new JLabel("Total");
-		lblTotal.setBounds(252, 293, 46, 14);
+		lblTotal.setBounds(252, 325, 46, 14);
 		contentPane.add(lblTotal);
-		
-		textField = new JTextField();
-		textField.setBounds(324, 290, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
 		
 		JButton btnCheckout = new JButton("Checkout");
 		btnCheckout.addActionListener(new ActionListener() {
@@ -112,12 +105,15 @@ public class Orderform extends JFrame {
 		contentPane.add(btnCancel);
 		
 		table = new JTable();
-		table.setBounds(41, 102, 369, 128);
+		table.setBounds(41, 102, 440, 212);
 		contentPane.add(table);
 		
-		ResultSet myresultset=null;
+		JLabel lblTotal1 = new JLabel("");
+		lblTotal1.setBounds(320, 325, 65, 14);
+		contentPane.add(lblTotal1);
+		ResultSet myresultset,myresultset1=null;
 		Statement stmnt=null;
-		PreparedStatement prepstmt;
+		PreparedStatement prepstmt,prepstmt1;
 		String query =null;
 		Connection myDBconnection =null;
 				
@@ -128,21 +124,47 @@ public class Orderform extends JFrame {
 			
 		    System.out.println("Connected to DB");
 		
-			String sqlQuery=("SELECT * FROM veggies.purchasetable");
+			String sqlQuery=("SELECT PurchasedItemName,Quantity,TotalAmount  FROM veggies.purchasetable");
+			prepstmt = (PreparedStatement) myDBconnection.prepareStatement(sqlQuery);
+			myresultset= prepstmt.executeQuery();
+			
+			if(myresultset!=null){
+				 table.setModel(DbUtils.resultSetToTableModel(myresultset));
+				 			 
+				 }
+				 								
+				}catch(Exception exc){
+					exc.printStackTrace();
+											
+				}
+			
+			
+			String sqlQuery1=("SELECT SUM(TotalAmount) FROM veggies.purchasetable");
 
-			 prepstmt = (PreparedStatement) myDBconnection.prepareStatement(sqlQuery);
+			 
+			 prepstmt1 = (PreparedStatement) myDBconnection.prepareStatement(sqlQuery1);
 						 		 
-			 myresultset= prepstmt.executeQuery();
+			 
+			 myresultset1=prepstmt1.executeQuery();
+			 	 
+			 //System.out.println("total amount"+myresultset1);
 			 
 			 //table.setModel(dataModel);
-			 if(myresultset!=null){
-			 table.setModel(DbUtils.resultSetToTableModel(myresultset));
-			 }
-			 								
-			}catch(Exception exc){
-				exc.printStackTrace();
-										
-			}
+			 
+	try{
+		 myresultset1.next();
+			 
+			 String sum =myresultset1.getString(1);
+			 System.out.println(sum);
+						 
+			 lblTotal1.setText(sum);
+			 
+			 			 
+		 
+	 }catch(Exception e){
+		 System.out.println(e);
+		 	 
+	 }
 		
 		
 	}

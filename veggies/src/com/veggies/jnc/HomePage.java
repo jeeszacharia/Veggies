@@ -168,16 +168,15 @@ public class HomePage extends JFrame {
 					 
 				double Itemprice =0;		
 				double amount=0;
+				try {
+					obj.connecttoDB();
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				
                     if(chckbxPear.isSelected()){
-                    	
-                    	try {
-							obj.connecttoDB();
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-                                      										
+                    	                    	                                      										
 					String pearSelected=chckbxPear.getText();
 					
 					double qnty=Double.parseDouble(txtqntyPear.getText());
@@ -188,6 +187,8 @@ public class HomePage extends JFrame {
 								
 								  Itemprice = myresultset.getDouble("Price");
 								  amount = qnty*Itemprice;
+								  
+								  
 								}
 						 }
 						
@@ -202,47 +203,234 @@ public class HomePage extends JFrame {
                     
                     if(chckbxPotato.isSelected()){
 							
-    					String potatoSelected=chckbxPear.getText();
+    					String potatoSelected=chckbxPotato.getText();
+    					    					
+    					double qnty=Double.parseDouble(txtqntyPotato.getText());
     					
-    				 }
+    					try {
+    						while(myresultset.next()){
+    							if(myresultset.getString("Itemname").equals("Potato")){
+    								
+    								  Itemprice = myresultset.getDouble("Price");
+    								  amount = qnty*Itemprice;
+    								  
+    								  
+    								}
+    						 }
+    						
+    					} catch (SQLException e1) {
+    						// TODO Auto-generated catch block
+    						e1.printStackTrace();
+    					}
+    					//double Amount=6.5;
+    					
+    					obj.insetTopurchase(potatoSelected, qnty,amount);
+    				      }
+			
+                        
+    				 
                     if(chckbxTomato.isSelected()){
 						
-    					String tomatoSelected=chckbxPear.getText();
+    					String tomatoSelected=chckbxTomato.getText();
+    					double qnty=Double.parseDouble(txtqntyTomato.getText());
     					
-    				 }
+    					try {
+    						while(myresultset.next()){
+    							if(myresultset.getString("Itemname").equals("Tomato")){
+    								
+    								  Itemprice = myresultset.getDouble("Price");
+    								  amount = qnty*Itemprice;
+    								  
+    								  
+    								}
+    						 }
+    						
+    					} catch (SQLException e1) {
+    						// TODO Auto-generated catch block
+    						e1.printStackTrace();
+    					}
+    					
+    					
+    					obj.insetTopurchase(tomatoSelected, qnty,amount);
+    				      }
+                        
+                    
                         if(chckbxCarrot.isSelected()){
 						
-    					String carrotSelected=chckbxPear.getText();
+    					String carrotSelected=chckbxCarrot.getText();
+       					double qnty=Double.parseDouble(txtqntyCarrot.getText());
     					
-    				    }
+    					try {
+    						while(myresultset.next()){
+    							if(myresultset.getString("Itemname").equals("Carrot")){
+    								
+    								  Itemprice = myresultset.getDouble("Price");
+    								  amount = qnty*Itemprice;
+    								  
+    								  
+    								}
+    						 }
+    						
+    					} catch (SQLException e1) {
+    						// TODO Auto-generated catch block
+    						e1.printStackTrace();
+    					}
+    					
+    					
+    					obj.insetTopurchase(carrotSelected, qnty,amount);
+    				      }
+    					
+    				    
                         if(chckbxOnion.isSelected()){
     						
-        					String onionSelected=chckbxPear.getText();
+        					String onionSelected=chckbxOnion.getText();
+        					double qnty=Double.parseDouble(txtqntyOnion.getText());
         					
-        				    }
+        					try {
+        						while(myresultset.next()){
+        							if(myresultset.getString("Itemname").equals("Onion")){
+        								
+        								  Itemprice = myresultset.getDouble("Price");
+        								  amount = qnty*Itemprice;
+        								  
+        								  
+        								}
+        						 }
+        						
+        					} catch (SQLException e1) {
+        						// TODO Auto-generated catch block
+        						e1.printStackTrace();
+        					}
+        					
+        					
+        					obj.insetTopurchase(onionSelected, qnty,amount);
+        				      }
+        					
+        				    
                            if(chckbxLettuce.isSelected()){
     						
-        					String lettuceSelected=chckbxPear.getText();
+        					String lettuceSelected=chckbxLettuce.getText();
+                           double qnty=Double.parseDouble(txtqntyLettuce.getText());
         					
-        				    }
+        					try {
+        						while(myresultset.next()){
+        							if(myresultset.getString("Itemname").equals("Lettuce")){
+        								
+        								  Itemprice = myresultset.getDouble("Price");
+        								  amount = qnty*Itemprice;
+        								  
+        								  
+        								}
+        						 }
+        						
+        					} catch (SQLException e1) {
+        						// TODO Auto-generated catch block
+        						e1.printStackTrace();
+        					}
+        					
+        					
+        					obj.insetTopurchase(lettuceSelected, qnty,amount);
+        				      }
+        					
+        				    
                            if(chckbxKiwi.isSelected()){
        						
-           					String kiwiSelected=chckbxPear.getText();
+           					String kiwiSelected=chckbxKiwi.getText();
+                                double qnty=Double.parseDouble(txtqntyKiwi.getText());
+        					
+        					try {
+        						while(myresultset.next()){
+        							if(myresultset.getString("Itemname").equals("Kiwi")){
+        								
+        								  Itemprice = myresultset.getDouble("Price");
+        								  amount = qnty*Itemprice;
+        								  
+        								  
+        								}
+        						 }
+        						
+        					} catch (SQLException e1) {
+        						// TODO Auto-generated catch block
+        						e1.printStackTrace();
+        					}
+        					
+        					
+        					obj.insetTopurchase(kiwiSelected, qnty,amount);
            					
            				    }
                            if(chckbxApple.isSelected()){
           						
-              					String appleSelected=chckbxPear.getText();
+              					String appleSelected=chckbxApple.getText();
+              					 double qnty=Double.parseDouble(txtqntyApple.getText());
+             					
+             					try {
+             						while(myresultset.next()){
+             							if(myresultset.getString("Itemname").equals("Apple")){
+             								
+             								  Itemprice = myresultset.getDouble("Price");
+             								  amount = qnty*Itemprice;
+             								  
+             								  
+             								}
+             						 }
+             						
+             					} catch (SQLException e1) {
+             						// TODO Auto-generated catch block
+             						e1.printStackTrace();
+             					}
+             					
+             					
+             					obj.insetTopurchase(appleSelected, qnty,amount);
               					
               				    }
                            if(chckbxMandarin.isSelected()){
          						
-             					String mandarinSelected=chckbxPear.getText();
+             					String mandarinSelected=chckbxMandarin.getText();
+                                 double qnty=Double.parseDouble(txtqntyMandarin.getText());
+             					
+             					try {
+             						while(myresultset.next()){
+             							if(myresultset.getString("Itemname").equals("Mandarin")){
+             								
+             								  Itemprice = myresultset.getDouble("Price");
+             								  amount = qnty*Itemprice;
+             								  
+             								  
+             								}
+             						 }
+             						
+             					} catch (SQLException e1) {
+             						// TODO Auto-generated catch block
+             						e1.printStackTrace();
+             					}
+             					
+             					
+             					obj.insetTopurchase(mandarinSelected, qnty,amount);
              					
              				    }
                            if(chckbxBanana.isSelected()){
         						
-            					String bananaSelected=chckbxPear.getText();
+            					String bananaSelected=chckbxBanana.getText();
+                               double qnty=Double.parseDouble(txtqntyBanana.getText());
+             					
+             					try {
+             						while(myresultset.next()){
+             							if(myresultset.getString("Itemname").equals("Banana")){
+             								
+             								  Itemprice = myresultset.getDouble("Price");
+             								  amount = qnty*Itemprice;
+             								  
+             								  
+             								}
+             						 }
+             						
+             					} catch (SQLException e1) {
+             						// TODO Auto-generated catch block
+             						e1.printStackTrace();
+             					}
+             					
+             					
+             					obj.insetTopurchase(bananaSelected, qnty,amount);
             					
             				    }
                                    			
@@ -374,13 +562,13 @@ public class HomePage extends JFrame {
   						     
                              }
                            
-                           if(myresultset.getString("Itemname").equals("Lettuce")){
+                          // if(myresultset.getString("Itemname").equals("Lettuce")){
      							
-                           	  Itemprice=myresultset.getDouble("Price");
-                           	lblLettuce.setText(String.valueOf(Itemprice));
+                           	 // Itemprice=myresultset.getDouble("Price");
+                           	//lblLettuce.setText(String.valueOf(Itemprice));
    	                        
    						     
-                              }
+                             // }
                            
                            if(myresultset.getString("Itemname").equals("Apple")){
     							

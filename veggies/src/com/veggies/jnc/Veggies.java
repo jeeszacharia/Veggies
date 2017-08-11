@@ -17,7 +17,6 @@ public class Veggies{
 	private JFrame frame;
 	private JTextField textuserID;
 	private JPasswordField passwordField;
-
 	/**
 	 * Launch the application.
 	 */

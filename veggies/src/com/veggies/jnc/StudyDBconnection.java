@@ -126,7 +126,7 @@ class connection{
 		 try{
 				
 				String sqlQuery=("INSERT INTO veggies.purchasetable (PurchasedItemName,Quantity,TotalAmount) VALUES(?,?,?)");
-				//String sqlQuery=("INSERT INTO veggies.purchasetable (PurchasedItemName,Quantity) VALUES(?,?)");
+				
 
 				 prepstmt = (PreparedStatement) myDBconnection.prepareStatement(sqlQuery);
 				 
