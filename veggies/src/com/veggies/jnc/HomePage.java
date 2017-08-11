@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.SynchronousQueue;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -228,7 +229,7 @@ public class HomePage extends JFrame {
     				      }
 			
                         
-    				 
+    				 System.out.println("");
                     if(chckbxTomato.isSelected()){
 						
     					String tomatoSelected=chckbxTomato.getText();
