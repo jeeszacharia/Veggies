@@ -177,7 +177,7 @@ public class HomePage extends JFrame {
 				}
 				
                     if(chckbxPear.isSelected()){
-                    	System.out.println("");
+                    	System.out.println("Checkbox testing completed");
                                     	
                     	                    	                                      										
 					String pearSelected=chckbxPear.getText();
