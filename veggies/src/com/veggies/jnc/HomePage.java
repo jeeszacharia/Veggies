@@ -212,7 +212,7 @@ public class HomePage extends JFrame {
     					
     					try {
     						while(myresultset.next()){
-    							if(myresultset.getString("Itemname").equals("Potato1")){
+    							if(myresultset.getString("Itemname").equals("Potato99")){
     								
     								  Itemprice = myresultset.getDouble("Price");
     								  amount = qnty*Itemprice;
